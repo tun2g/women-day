@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+</head>
+<body>
+    <div class="wrapper">
+
+        <div class="hello">
+            <div class="avt">
+                <img width="250px" height="250px" src="./images/3.jpg" alt="">
+            </div>
+            <div class="text">
+                
+            </div>
+            <div class="btn" onclick="changePage()">
+                <img width="40px" height="40px" src="./images/btn.png" alt="">
+            </div>
+        </div>
+        
+        
+    </div>
+
+        <script>
+        //text typing
+            const typed=new Typed(".text",{
+                strings:["","Hi, Bay Bi...","Today is... 20/10", "It's your day!","Feel special, unique and beautiful","Happy Womens Day!","Click that icon :')"],
+                typeSpeed:100,
+                backSpeed:50,
+                loop:false
+            })
+        //
+
+
+
+        //change page
+        function changePage(){
+            const wrm=document.createElement('div')
+            wrm.setAttribute('class','wrapper-main')
+            wrm.innerHTML=`
+            <div class="box">
+                </div> 
+                <div class="title">
+                    HAPPY WOMEN'S DAY
+                </div>
+                <div class="container">
+                    <div class="bubbles">
+                    </div>
+                    <div class="btn" onclick="changeEnd()">
+                        <img width="50px" height="50px" src="./images/rose.png" alt="">
+                    </div>
+                </div>
+            `
+            const wr=document.getElementsByClassName('wrapper')[0]
+            document.body.removeChild(wr)
+            document.body.appendChild(wrm)
+
+            // image 3d rotate
+            box=document.getElementsByClassName('box')[0]
+            for (let i=1;i<9;i++){
+                const fl=document.createElement('span')
+                fl.setAttribute('style',`--i:${i}`)
+                fl.innerHTML=`<img width="250px" height="250px" src="./images/${i}.jpg"/>>`
+                box.appendChild(fl)
+            }
+            //
+
+            // flowers falling animation
+            const bb=document.getElementsByClassName('bubbles')[0]
+            for (let i=0;i<10;i++){
+                const fl=document.createElement('span')
+                fl.innerHTML=`<img class="flower" src="./images/ch.png" alt="">`
+                bb.appendChild(fl)
+            }
+            const list=document.getElementsByClassName('flower')
+            let a=0
+            Array.from(list).forEach((flo)=>{
+                a++
+                console.log(Math.floor(Math.random()))
+                flo.style.left=Math.floor(Math.random()*100) +a  + 'vw'
+                flo.style.top=Math.floor(Math.random()*100)-100 -a + 'vh'
+            })
+            //
+
+        }
+        //
+        
+
+        //end
+        function changeEnd(){
+            const wre=document.createElement('div')
+            wre.setAttribute('class','wrapper-end')
+
+            const be=document.createElement('div')
+            be.setAttribute('class','box-end')
+            arr=['A','n','h','_','y','ê','u','_','e','m']
+            for(let i=1;i<11;i++){
+                const el=document.createElement('span')
+                el.setAttribute('style',`--i:${i};`)
+                el.innerText=arr[i-1]
+                be.appendChild(el)
+            }
+            wre.appendChild(be)
+            const wrm=document.getElementsByClassName('wrapper-main')[0]
+            document.body.removeChild(wrm)
+            document.body.appendChild(wre)
+        }
+
+
+
+    </script>
+</body>
+</html>
